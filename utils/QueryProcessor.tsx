@@ -21,7 +21,7 @@ export default function QueryProcessor(query: string): string {
     const numbers = query.match(/\d+/g);  // Extracts all numbers from the query
     if (numbers) {
       const largest = Math.max(...numbers.map(Number));  // Finds the largest number
-      return `The largest number is ${largest}.`;
+      return `${largest}.`;
     }
   }
 

@@ -15,6 +15,15 @@ export default function QueryProcessor(query: string): string {
       return result.toString(); // Returns the result as a string
     }
   }
+
+  if (query.toLowerCase().includes("to the power of")) {
+    const numbers = query.match(/\d+/g); // Extracts numbers from the query
+    if (numbers && numbers.length === 2) {
+      const result = Math.pow(Number(numbers[0]), Number(numbers[1])); // Raises the first number to the power of the second number
+      return result.toString(); // Returns the result as a string
+    }
+  }
+  
   
   
 

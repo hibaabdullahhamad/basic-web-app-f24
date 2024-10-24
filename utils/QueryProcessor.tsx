@@ -72,6 +72,15 @@ export default function QueryProcessor(query: string): string {
       return primes.join(', ');
     }
   }
+
+  if (query.toLowerCase().includes("minus")) {
+    const numbers = query.match(/\d+/g); // Extracts numbers from the query
+    if (numbers && numbers.length === 2) {
+      const result = Number(numbers[0]) - Number(numbers[1]); // Subtracts the two numbers
+      return result.toString(); // Returns the result as a string
+    }
+  }
+  
   
   
   

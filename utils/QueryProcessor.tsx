@@ -13,8 +13,8 @@ export default function QueryProcessor(query: string): string {
     return ( "hhamad" );
   }
 
-  if (query.toLowerCase().includes("your name")) {
-    return "hhamad";  // Use your name as the response
+  if (query.toLowerCase().includes("What is your name?")) {
+    return "hhamad-313";  // Use your name as the response
   }
   return "";
 

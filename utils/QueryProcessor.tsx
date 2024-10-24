@@ -27,11 +27,14 @@ export default function QueryProcessor(query: string): string {
 
   if (query.toLowerCase().includes("plus")) {
     const numbers = query.match(/\d+/g); // Extracts numbers from the query
-    if (numbers && numbers.length === 2) {
-      const sum = Number(numbers[0]) + Number(numbers[1]); // Adds the two numbers
-      return `${sum}`;
+    if (numbers && numbers.length >= 2) { // Ensure there are at least two numbers
+      const result = numbers.reduce((sum, num) => sum + Number(num), 0); // Adds all numbers
+      return result.toString(); // Returns the result as a string
+    } else if (numbers && numbers.length === 1) { // Case for a single number
+      return numbers[0]; // Just return the single number
     }
   }
+  
 
   if (query.toLowerCase().includes("multiplied by")) {
     const numbers = query.match(/\d+/g); // Extracts numbers from the query

@@ -53,6 +53,24 @@ export default function QueryProcessor(query: string): string {
       return result ? result.toString() : "No number is both a square and a cube.";
     }
   }
+
+  if (query.toLowerCase().includes("which of the following numbers are primes")) {
+    const numbers = query.match(/\d+/g); // Extracts numbers from the query
+    if (numbers) {
+      const isPrime = (num: number) => {
+        if (num <= 1) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+          if (num % i === 0) return false;
+        }
+        return true;
+      };
+  
+      const primes = numbers.filter((num) => isPrime(Number(num)));
+      
+      return primes.join(', ');
+    }
+  }
+  
   
   
 

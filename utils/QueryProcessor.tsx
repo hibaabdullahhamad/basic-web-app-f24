@@ -45,14 +45,16 @@ export default function QueryProcessor(query: string): string {
     const numbers = query.match(/\d+/g); // Extracts numbers from the query
     if (numbers) {
       const result = numbers.find((num) => {
-        const sqrt = Math.sqrt(Number(num));
-        const cbrt = Math.cbrt(Number(num));
+        const number = Number(num);
+        const sqrt = Math.sqrt(number);
+        const cbrt = Math.cbrt(number);
         return Number.isInteger(sqrt) && Number.isInteger(cbrt); // Checks if it's both a square and a cube
       });
   
-      return result ? result.toString() : "No number is both a square and a cube.";
+      return result ? result.toString() : ""; // Return the number as a string or an empty string if not found
     }
   }
+  
 
   if (query.toLowerCase().includes("which of the following numbers are primes")) {
     const numbers = query.match(/\d+/g); // Extracts numbers from the query

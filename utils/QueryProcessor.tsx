@@ -23,6 +23,23 @@ export default function QueryProcessor(query: string): string {
       return result.toString(); // Returns the result as a string
     }
   }
+
+  if (query.toLowerCase().includes("anagram of dictionary")) {
+    const words = query.match(/\b\w+\b/g); // Extracts the words from the query
+    const targetWord = "dictionary";
+  
+    // Helper function to check if two words are anagrams
+    const isAnagram = (word1: string, word2: string) => {
+      const sortedWord1 = word1.toLowerCase().split('').sort().join('');
+      const sortedWord2 = word2.toLowerCase().split('').sort().join('');
+      return sortedWord1 === sortedWord2;
+    };
+  
+    const result = words.find((word) => isAnagram(word, targetWord));
+  
+    return result ? result : ""; // Return the anagram or an empty string if none found
+  }
+  
   
   
   

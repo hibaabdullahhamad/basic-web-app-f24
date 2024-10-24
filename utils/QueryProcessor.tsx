@@ -7,6 +7,16 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
+  if (query.toLowerCase().includes("multiplied by") && query.toLowerCase().includes("plus")) {
+    const numbers = query.match(/\d+/g); // Extracts numbers from the query
+    if (numbers && numbers.length === 3) {
+      const product = Number(numbers[0]) * Number(numbers[1]); // Multiplies the first two numbers
+      const result = product + Number(numbers[2]); // Adds the third number to the product
+      return result.toString(); // Returns the result as a string
+    }
+  }
+  
+
   if (query.toLowerCase().includes("andrew id")) {
     //TODO add your Andrew ID below
     //TODO update the corresponding test case in __tests__

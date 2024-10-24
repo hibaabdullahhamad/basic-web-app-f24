@@ -7,14 +7,15 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
-  if (query.toLowerCase().includes("multiplied by") && query.toLowerCase().includes("plus")) {
+  if (query.toLowerCase().includes("plus") && query.toLowerCase().includes("multiplied by")) {
     const numbers = query.match(/\d+/g); // Extracts numbers from the query
     if (numbers && numbers.length === 3) {
-      const product = Number(numbers[0]) * Number(numbers[1]); // Multiplies the first two numbers
-      const result = product + Number(numbers[2]); // Adds the third number to the product
+      const product = Number(numbers[1]) * Number(numbers[2]); // Multiplies the second and third numbers
+      const result = Number(numbers[0]) + product; // Adds the first number to the product
       return result.toString(); // Returns the result as a string
     }
   }
+  
   
 
   if (query.toLowerCase().includes("andrew id")) {

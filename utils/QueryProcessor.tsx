@@ -25,6 +25,15 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.toLowerCase().includes("plus")) {
+    const numbers = query.match(/\d+/g); // Extracts numbers from the query
+    if (numbers && numbers.length === 2) {
+      const sum = Number(numbers[0]) + Number(numbers[1]); // Adds the two numbers
+      return `The result is ${sum}.`;
+    }
+  }
+  
+
 
   return "";
 
